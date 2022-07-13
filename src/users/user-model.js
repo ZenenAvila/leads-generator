@@ -1,5 +1,5 @@
 const { Model, DataTypes } = require("sequelize");
-//const sequelize = require("../config/database-config");
+const sequelize = require("../config/database-config");
 
 const USER_TABLE = "users";
 
@@ -46,8 +46,9 @@ class User extends Model {
     };
   }
 }
+const userDefin = sequelize.define(USER_TABLE, UserSchema);
 
-module.exports = { User, UserSchema, USER_TABLE };
+module.exports = { userDefin, UserSchema };
 
 // const User = sequelize.define(
 //   "usuario",

@@ -1,14 +1,13 @@
 const app = require("./src/config/router-api");
 const sequelize = require("./src/config/database-config");
-const user_ = require("./src/users/users-router");
-app.use("/user", user_);
+const user = require("./src/users/users-router");
+//const { User, UserSchema, USER_TABLE } = require("./src/users/user-model");
 
-const { User, UserSchema, USER_TABLE } = require("./src/users/user-model");
+app.use("/user", user);
+
 async function main() {
   console.log("index");
   try {
-    console.log("creando tabla");
-    await sequelize.define(USER_TABLE, UserSchema);
     await sequelize.sync();
   } catch (error) {
     console.log(error);
